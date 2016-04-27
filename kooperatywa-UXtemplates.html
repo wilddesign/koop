@@ -1,0 +1,79 @@
+
+<!-- template with main layout -->
+	<template name="mainLayout">
+	<head>
+	 	<title>Wawelska Kooperatywa Spożywcza - e-bazar</title>
+	</head>
+		<header>
+		 	<h1>Wawelska Kooperatywa Spożywcza</h1>
+		</header>
+		{{>loginButtons}}
+		{{> Template.dynamic template=intro}}
+		{{> Template.dynamic template=content}}	
+		<footer>Created by Wojciech Nogaś and Filip Kowal, 2016</footer>
+	</template>
+
+	<template name="startIntro">
+		<div class="startintro">
+			<h1>Witamy!</h1>
+			
+		</div>
+	</template>
+	<template name="startContent">
+		<div class="startcontent">
+			<p>Zaloguj się aby móc kupować i sprzedawać na naszym e-bazarze!</p>
+			<nav>
+				<ul>
+					<li><a href="/ibuy"><p>Panel kupującego</p></a></li>
+					<li><a href="/isell"><p>Panel sprzedawcy</p></a></li>
+				</ul>
+			</nav>
+		</div>
+	</template>
+
+<!-- template for list offers subpage -->
+	<template name="iBuyIntro">
+		<div class="iBuyintro">
+			{{#if currentUser}}
+				<a href="/mycart"><p>Mój koszyk</p></a>
+			{{/if}}
+		</div>
+	</template>
+	<template name="iBuyContent">
+		<div class="iBuycontent">
+			<h1>Oferta:</h1>
+			{{>productsList}}
+			<h2>Polecamy, prosto od rolnika!</h2>
+		</div>
+	</template>
+
+<!-- template for buyer's cart subpage -->
+	<template name="myCartIntro">
+		<div class="mycartintro">
+			<h1>Mój koszyk</h1>
+		</div>
+	</template>
+	<template name="myCartContent">
+		<div class="mycartcontent">
+			{{>ordersList}}
+			<h2>Gotowe!</h2>
+			<h3>Zapraszamy po odbiór w najbliższą niedzielę!</h3>
+		</div>
+	</template>
+
+<!-- template for seller offers subpage -->
+	<template name="iSellIntro">
+		<div class="insertproductintro">
+			<h1>Sprzedawaj swoje produkty członkom WKS! Dla nas jakość liczy się bardziej</h1>
+		</div>
+	</template>
+	<template name="iSellContent">
+		<div class="insertproductcontent">
+			{{#if currentUser}}
+				{{>insertProduct}}
+				<h2>Gotowe!</h2>
+			{{else}}
+				<h2>Zaloguj się!</h2>
+			{{/if}}
+		</div>
+	</template>
