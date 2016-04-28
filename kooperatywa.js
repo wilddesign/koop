@@ -11,7 +11,7 @@ if(Meteor.isServer){
 			return Orders.find();
 	});
 // we need a server-side only methods to export Orders and Products to external file,
-// a  method for clearing both databases not at once
+// a  method for clearing any of the databases
 // and removing users
 }
 
