@@ -10,7 +10,9 @@ if(Meteor.isServer){
 	Meteor.publish('orders',function(){
 			return Orders.find();
 	});
-// publish products
+// we need a server-side only methods to export Orders and Products to external file,
+// a  method for clearing both databases not at once
+// and removing users
 }
 
 

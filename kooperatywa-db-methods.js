@@ -18,7 +18,8 @@ Meteor.methods({
 	},
 	'placeOrder':function(_id,productName,producer,quantity,unit,price){
 
-		if(!(Orders.find(_id).fetch().length)) {//problem
+		if(!(Orders.find(_id).fetch().length)) {
+			// insert an order if the product is not already ordered
 			var purchaser=Meteor.userId();
 			Orders.insert({
 				_id: _id,
@@ -31,9 +32,7 @@ Meteor.methods({
 				price: price,
 				summedPrice: price * quantity
 			});   
-		      } else {
-				Orders.update(productsId, {$set: {quantity: quantity, summedPrice: summedPrice}});
-        			}
+		      } 
 	},
 
 	'removeOrder':function(){
